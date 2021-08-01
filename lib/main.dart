@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_test/pages/Home.dart';
 import 'package:instagram_test/widgets/MyBottomNavigationBar.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
+import 'package:sqflite/sqflite.dart';
 
-void main() {
+import 'globals.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Globals.database = openDatabase(
+    join(await getDatabasesPath(), "posts_database"),
+    onCreate: (db, version) async {
+      await db.execute(
+          'CREATE TABLE posts(id INTEGER PRIMARY KEY AUTOINCREMENT, pId TEXT)');
+    },
+    version: 1,
+  );
+
   runApp(MyApp());
 }
 
@@ -25,5 +40,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

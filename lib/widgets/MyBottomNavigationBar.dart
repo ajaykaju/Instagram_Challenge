@@ -54,12 +54,13 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           /// Profile
           BottomNavigationBarItem(
             icon: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image.asset(
-                  "assets/profile.png",
-                  width: 30,
-                  height: 30,
-                )),
+              borderRadius: BorderRadius.circular(100),
+              child: Image.asset(
+                "assets/profile.png",
+                width: 30,
+                height: 30,
+              ),
+            ),
             label: "Profile",
           ),
         ],
